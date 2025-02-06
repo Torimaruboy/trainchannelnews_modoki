@@ -35,11 +35,14 @@ for url, title in zip(urls, titles):
     driver.find_element(By.LINK_TEXT, "記事全文を読む").click()
     time = driver.find_element(By.TAG_NAME, "time").text
     article = driver.find_element(By.CLASS_NAME, "article_body").text
-    image_url = (
-        driver.find_element(By.CLASS_NAME, "article_body")
-        .find_element(By.TAG_NAME, "img")
-        .get_attribute("src")
-    )
+    try:
+        image_url = (
+            driver.find_element(By.CLASS_NAME, "article_body")
+            .find_element(By.TAG_NAME, "img")
+            .get_attribute("src")
+        )
+    except Exception:
+        pass
     # 画像を保存する
     # with open(os.path.join("images", "image.jpg"), "wb") as f:
     #     f.write(requests.get(image_url).content)
