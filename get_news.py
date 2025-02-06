@@ -42,7 +42,7 @@ for url, title in zip(urls, titles):
             .get_attribute("src")
         )
     except Exception:
-        pass
+        image_url = None
     # 画像を保存する
     # with open(os.path.join("images", "image.jpg"), "wb") as f:
     #     f.write(requests.get(image_url).content)
